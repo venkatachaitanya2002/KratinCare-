@@ -1,5 +1,5 @@
 # KratinCare-
-Introduction
+# Introduction: 
 KratinCare+ is a web application designed to improve the health and well-being of users, with a focus on seniors and older adults. The platform offers various features to help users stay healthy, active, and connected within a supportive community.
 
 # Features
