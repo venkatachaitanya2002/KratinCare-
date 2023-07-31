@@ -1,0 +1,102 @@
+
+<html>
+
+<head>
+  <title>ElderlyCare+ - Medication Reminders</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>ElderlyCare+</h1>
+
+  </header>
+
+  <nav id="navBar">
+    <ul>
+      <li><a href="exercises.html">Exercise Videos</a></li>
+      <li><a href="yoga.html">Yoga Videos</a></li>
+      <li><a href="reminder.html">Medication Reminders</a></li>
+
+    </ul>
+  </nav>
+
+  <section id="content">
+    <h2>Medication Reminders</h2>
+
+    <div id="addReminderForm" class="form">
+      <h3>Add a Reminder</h3>
+      <form id="addReminderFormElement">
+        <label for="reminderName">Reminder Name:</label>
+        <input type="text" id="reminderName" required>
+        <label for="reminderTime">Reminder Time:</label>
+        <input type="time" id="reminderTime" required>
+        <button type="submit">Add Reminder</button>
+      </form>
+    </div>
+
+    <div id="reminderList">
+      <h3>Your Reminders</h3>
+      <ul id="reminderItems">
+      </ul>
+    </div>
+
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var addReminderForm = document.getElementById('addReminderForm');
+      var reminderList = document.getElementById('reminderList');
+      var reminderItems = document.getElementById('reminderItems');
+
+      var addReminderFormElement = document.getElementById('addReminderFormElement');
+
+      addReminderFormElement.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var reminderName = document.getElementById('reminderName').value;
+        var reminderTime = document.getElementById('reminderTime').value;
+        addReminder(reminderName, reminderTime);
+        addReminderFormElement.reset();
+      });
+
+      function addReminder(name, time) {
+        var reminderItem = document.createElement('li');
+        reminderItem.textContent = name + ' - ' + time;
+        reminderItems.appendChild(reminderItem);
+      }
+
+      var navBtn = document.getElementById('navBtn');
+      var loginForm = document.getElementById('loginForm');
+      var signupForm = document.getElementById('signupForm');
+
+      navBtn.addEventListener('click', function () {
+        toggleForm(loginForm);
+        toggleForm(signupForm);
+      });
+
+      document.addEventListener('click', function (event) {
+        if (event.target !== navBtn && event.target.closest('.form') === null) {
+          closeForms();
+        }
+      });
+
+      function toggleForm(form) {
+        if (form.style.display === 'block') {
+          form.style.display = 'none';
+        } else {
+          form.style.display = 'block';
+        }
+      }
+
+      function closeForms() {
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+
+</html>
